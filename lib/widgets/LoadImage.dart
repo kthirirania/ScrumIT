@@ -11,8 +11,8 @@ class LoadImage extends StatelessWidget {
   double bottomRight = 0;
   double bottomLeft = 0;
 
-  LoadImage(this.width, this.height, this.imageUrl,
-      [this.topRight, this.topLeft, this.bottomRight, this.bottomLeft]);
+  LoadImage(this.width, this.height, this.imageUrl, this.topRight, this.topLeft,
+      this.bottomRight, this.bottomLeft);
 
   @override
   Widget build(BuildContext context) {

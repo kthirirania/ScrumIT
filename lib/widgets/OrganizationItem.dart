@@ -9,6 +9,7 @@ class OrganizationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //MediaQuery.of(context).size.width
     return Container(
       height: 170,
       width: 260,
@@ -30,7 +31,7 @@ class OrganizationItem extends StatelessWidget {
         children: <Widget>[
           Flexible(
             flex: 1,
-            child: LoadImage(260, 90, organization.coverImage, 24, 24),
+            child: LoadImage(260, 90, organization.coverImage, 24, 24, 0, 0),
           ),
           Flexible(
             flex: 1,
@@ -42,23 +43,7 @@ class OrganizationItem extends StatelessWidget {
                 children: <Widget>[
                   Flexible(
                     flex: 2,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      ),
-                      child: Container(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Image.network(
-                            organization.logo,
-                            height: 68,
-                            width: 68,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: LoadImage(68, 68, organization.logo, 12, 12, 12, 12),
                   ),
                   Flexible(
                     flex: 5,
