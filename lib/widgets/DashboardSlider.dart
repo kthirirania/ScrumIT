@@ -15,8 +15,10 @@ class DashboardSlider extends StatefulWidget {
   double aspectRatio;
   double viewPort;
 
+  final void Function(dynamic index) updateSelection;
+
   DashboardSlider(this.height, this.dataList, this.item, this.aspectRatio,
-      this.viewPort);
+      this.viewPort, this.updateSelection);
 
   @override
   _DashboardSliderState createState() => _DashboardSliderState();
@@ -56,10 +58,10 @@ class _DashboardSliderState extends State<DashboardSlider> {
           height: widget.height,
           child: CarouselSlider(
             items: child,
-            initialPage: 1,
+            initialPage: child.length > 2 ? 1 : 0,
             scrollPhysics: BouncingScrollPhysics(),
-            enableInfiniteScroll: true,
-            autoPlay: true,
+            enableInfiniteScroll: child.length > 2 ? true : false,
+            autoPlay: child.length > 2 ? true : false,
             pauseAutoPlayOnTouch: Duration(seconds: 30),
             enlargeCenterPage: true,
             //aspectRatio: 1.7,
@@ -72,6 +74,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
                 case 'OrganizationItem':
                   return setState(() {
                     _organization = index;
+                    widget.updateSelection(index);
                   });
                   break;
                 case 'ProjectItem':
@@ -85,7 +88,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: Utils.map<Widget>(widget.dataList, (index, url) {
+          children: Utils.map<Widget>(widget.dataList, (index, item) {
             switch (widget.item) {
               case 'OrganizationItem':
                 return Container(

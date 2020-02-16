@@ -17,16 +17,19 @@ class OrganizationsTab extends StatefulWidget {
 class _OrganizationsTabState extends State<OrganizationsTab> {
 
   bool projectsIsSelected = true;
+  Organization selectedOrganization = Organization.getOrganizationData()[0];
 
-  @override
-  void initState() {
-    super.initState();
-
+  void refresh(dynamic index) {
+    setState(() {
+      selectedOrganization = Organization.getOrganizationData()[index];
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
     double width = (MediaQuery.of(context).size.width) / 3;
+
 
     return SingleChildScrollView(
       child: Column(
@@ -34,7 +37,7 @@ class _OrganizationsTabState extends State<OrganizationsTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          DashboardSlider(200, Organization.getOrganizationData(), 'OrganizationItem', 1.7, 0.7),
+          DashboardSlider(200, Organization.getOrganizationData(), 'OrganizationItem', 1.7, 0.7, refresh),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +103,7 @@ class _OrganizationsTabState extends State<OrganizationsTab> {
               ),
             ],
           ),
-          if (projectsIsSelected)DashboardSlider(290, Project.getProjectsList(), 'ProjectItem', 1.7, 0.62),
+          if (projectsIsSelected)DashboardSlider(290, selectedOrganization.projects, 'ProjectItem', 1.7, 0.62, refresh),
         ],
       ),
     );
