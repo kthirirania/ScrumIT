@@ -3,63 +3,51 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadImage extends StatelessWidget {
-
   double width;
   double height;
-  double padding;
   String imageUrl;
-  double borderRadius;
-  double imageBorderRadius;
-  bool isOval;
+  double topRight = 0;
+  double topLeft = 0;
+  double bottomRight = 0;
+  double bottomLeft = 0;
 
-  LoadImage(this.imageUrl, this.width, this.height, this.padding,
-      this.borderRadius, this.imageBorderRadius, this.isOval);
+  LoadImage(this.width, this.height, this.imageUrl,
+      [this.topRight, this.topLeft, this.bottomRight, this.bottomLeft]);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: (width + padding),
-      height: (height + padding),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(borderRadius),
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      imageBuilder: (context, imageProvider) => Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(topLeft),
+            topRight: Radius.circular(topRight),
+            bottomRight: Radius.circular(bottomRight),
+            bottomLeft: Radius.circular(bottomLeft),
+          ),
+          image: DecorationImage(
+            image: imageProvider,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
-      child: Center(
-        child: CachedNetworkImage(
-          imageUrl: imageUrl,
-          imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.circular(imageBorderRadius),
-              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-            ),
-          ),
-          placeholder: (context, url) => Shimmer.fromColors(
-            baseColor: Colors.grey[200],
-            highlightColor: Colors.grey[100],
-            child: Container(
-              width: (width + padding),
-              height: (height + padding),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(borderRadius),
-              ),
-            ),
-          ),
-          errorWidget: (context, url, error) => Shimmer.fromColors(
-            baseColor: Colors.grey[200],
-            highlightColor: Colors.grey[100],
-            child: Container(
-              width: (width + padding),
-              height: (height + padding),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(borderRadius),
-              ),
-            ),
-          ),
+      placeholder: (context, url) => Shimmer.fromColors(
+        baseColor: Colors.grey[200],
+        highlightColor: Colors.grey[100],
+        child: Container(
+          height: height,
+          width: width,
+        ),
+      ),
+      errorWidget: (context, url, error) => Shimmer.fromColors(
+        baseColor: Colors.grey[200],
+        highlightColor: Colors.grey[100],
+        child: Container(
+          height: height,
+          width: width,
         ),
       ),
     );

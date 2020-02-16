@@ -1,5 +1,6 @@
-class Utils{
+import 'package:flutter/material.dart';
 
+class Utils {
   static List<T> map<T>(List list, Function handler) {
     List<T> result = [];
 
@@ -8,5 +9,9 @@ class Utils{
     }
 
     return result;
+  }
+
+  static bool isPortrait(BuildContext context) {
+    return MediaQuery.of(context).orientation == Orientation.portrait;
   }
 }
