@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scrum_it/widgets/LoadImage.dart';
 import 'package:scrum_it/widgets/TabsWidget.dart';
 import 'package:scrum_it/widgets/menuIcon.dart';
 import 'package:scrum_it/widgets/tabs/OrganizationsTab.dart';
@@ -58,29 +59,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Stack(
                   overflow: Overflow.visible,
                   children: <Widget>[
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.8),
-                              spreadRadius: 10,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(0, 7), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Image.network(
-                              'https://drive.google.com/uc?export=view&id=1UFVwHjuoUQSK1SqYIQ6TjWUVJVjM_fNx'),
-                        ),
-                      ),
-                    ),
+                    LoadImage(60, 60, 'https://drive.google.com/uc?export=view&id=1UFVwHjuoUQSK1SqYIQ6TjWUVJVjM_fNx' ,8,8,8,8),
                     Positioned(
                       left: 48.0,
                       top: -8,

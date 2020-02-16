@@ -21,7 +21,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 170,
+      height: 200,
       child: CarouselSlider(
         items: child,
         initialPage: 1,

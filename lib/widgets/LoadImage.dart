@@ -35,16 +35,16 @@ class LoadImage extends StatelessWidget {
         ),
       ),
       placeholder: (context, url) => Shimmer.fromColors(
-        baseColor: Colors.grey[200],
-        highlightColor: Colors.grey[100],
+        baseColor: Colors.grey,
+        highlightColor: Colors.grey,
         child: Container(
           height: height,
           width: width,
         ),
       ),
       errorWidget: (context, url, error) => Shimmer.fromColors(
-        baseColor: Colors.grey[200],
-        highlightColor: Colors.grey[100],
+        baseColor: Colors.grey,
+        highlightColor: Colors.grey,
         child: Container(
           height: height,
           width: width,

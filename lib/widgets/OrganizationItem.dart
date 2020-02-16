@@ -13,7 +13,7 @@ class OrganizationItem extends StatelessWidget {
     return Container(
       height: 170,
       width: 260,
-      decoration: new BoxDecoration(
+      decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(24),
@@ -43,7 +43,10 @@ class OrganizationItem extends StatelessWidget {
                 children: <Widget>[
                   Flexible(
                     flex: 2,
-                    child: LoadImage(68, 68, organization.logo, 12, 12, 12, 12),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: LoadImage(60, 60, organization.logo, 12, 12, 12, 12),
+                    ),
                   ),
                   Flexible(
                     flex: 5,
@@ -76,14 +79,7 @@ class OrganizationItem extends StatelessWidget {
                                     return Padding(
                                       padding:
                                           const EdgeInsets.only(right: 1.0),
-                                      child: ClipOval(
-                                        child: Image.network(
-                                          organization.members[index].image,
-                                          height: 40,
-                                          width: 40,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                                      child: LoadImage(40, 40, organization.members[index].image, 40, 40, 40, 40)
                                     );
                                   }),
                               if (organization.members.length > 3)
@@ -91,7 +87,7 @@ class OrganizationItem extends StatelessWidget {
                                     height: 40,
                                     width: 40,
                                     decoration: BoxDecoration(
-                                      color: Colors.black,
+                                      color: Colors.black38,
                                       borderRadius: BorderRadius.circular(40),
                                     ),
                                     child: Center(
