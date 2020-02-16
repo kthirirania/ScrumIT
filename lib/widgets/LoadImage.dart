@@ -10,9 +10,10 @@ class LoadImage extends StatelessWidget {
   double topLeft = 0;
   double bottomRight = 0;
   double bottomLeft = 0;
+  bool withBorder = false;
 
   LoadImage(this.width, this.height, this.imageUrl, this.topRight, this.topLeft,
-      this.bottomRight, this.bottomLeft);
+      this.bottomRight, this.bottomLeft, [this.withBorder = false]);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class LoadImage extends StatelessWidget {
             bottomRight: Radius.circular(bottomRight),
             bottomLeft: Radius.circular(bottomLeft),
           ),
+          border: withBorder ? Border.all(color: Colors.white) : null,
           image: DecorationImage(
             image: imageProvider,
             fit: BoxFit.cover,

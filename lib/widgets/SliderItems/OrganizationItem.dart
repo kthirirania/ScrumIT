@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scrum_it/models/Organization.dart';
 import 'package:scrum_it/widgets/LoadImage.dart';
 
+import '../HorizontalListView.dart';
+
 class OrganizationItem extends StatelessWidget {
   Organization organization;
 
@@ -38,7 +40,7 @@ class OrganizationItem extends StatelessWidget {
             child: Container(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Flexible(
@@ -60,47 +62,7 @@ class OrganizationItem extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
-                        SizedBox(
-                          height: 40,
-                          width: 174,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: organization.members.length > 3
-                                      ? 3
-                                      : organization.members.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 1.0),
-                                      child: LoadImage(40, 40, organization.members[index].image, 40, 40, 40, 40)
-                                    );
-                                  }),
-                              if (organization.members.length > 3)
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black38,
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '+' +
-                                            (organization.members.length - 3)
-                                                .toString(),
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    )),
-                            ],
-                          ),
-                        ),
+                        HorizontalListView(organization.members, 3),
                       ],
                     ),
                   )

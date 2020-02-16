@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scrum_it/widgets/LoadImage.dart';
+import 'package:scrum_it/widgets/NotificationIcon.dart';
 import 'package:scrum_it/widgets/TabsWidget.dart';
 import 'package:scrum_it/widgets/menuIcon.dart';
 import 'package:scrum_it/widgets/tabs/OrganizationsTab.dart';
@@ -27,7 +28,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 48, left: 12, right: 12, bottom: 12),
+                  top: 16, left: 12, right: 12, bottom: 12),
               child: MenuIcon(16, 8),
             ),
           ),
@@ -63,23 +64,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Positioned(
                       left: 48.0,
                       top: -8,
-                      child: Container(
-                        width: 21,
-                        height: 21,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xffB99EAA),
-                        ),
-                        child: Center(
-                          child: Text(
-                            '11',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
+                      child: NotificationIcon(21,21, '11', Color(0xffB99EAA)),
                     ),
                   ],
                 ),

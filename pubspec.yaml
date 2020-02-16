@@ -28,6 +28,7 @@ dependencies:
   intl: ^0.16.1
   shimmer: ^1.0.1
   url_launcher: ^5.4.1
+  tinycolor: ^1.0.2
 
 dev_dependencies:
   flutter_test:
