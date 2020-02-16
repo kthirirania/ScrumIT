@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:scrum_it/screens/dashboard.dart';
+import 'package:scrum_it/screens/DashboardScreen.dart';
+
+import 'Utlis.dart';
+import 'screens/DasboardScreenLandscape.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,9 +32,17 @@ class _MyHomePageState extends State<MyHomePage> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark));
-    return Scaffold(
+   if (Utils.isPortrait(context)) return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(child: DashboardScreen()),
+      body: SafeArea(
+         child: DashboardScreen(),
+      ),
     );
+   else return Scaffold(
+     backgroundColor: Colors.white,
+     body: SafeArea(
+       child: DasboardScreenLandscape(),
+     ),
+   );
   }
 }
