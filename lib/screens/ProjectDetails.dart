@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scrum_it/models/Project.dart';
 import 'package:scrum_it/widgets/CircularChartWidget.dart';
+import 'package:scrum_it/widgets/HorizontalListView.dart';
 import 'package:scrum_it/widgets/LoadImage.dart';
 
 class ProjectDetails extends StatefulWidget {
@@ -21,6 +22,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
         top: false,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 2.0),
@@ -58,11 +60,14 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            SvgPicture.asset(
-                              'assets/icons/back.svg',
-                              color: Color(0xff8288BA),
-                              width: 24,
-                              height: 24,
+                            InkWell(
+                              onTap: () => Navigator.pop(context),
+                              child: SvgPicture.asset(
+                                'assets/icons/back.svg',
+                                color: Color(0xff8288BA),
+                                width: 24,
+                                height: 24,
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 24.0),
@@ -82,6 +87,37 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                       CircularChartWidget(),
                     ],
                   ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24.0, left: 12, bottom: 12),
+                child: Text(
+                  widget.project.name + ' User Stories',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+              ),
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Color(0xffF6F7FA),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x55B8B9BF),
+                      blurRadius: 20.0,
+                      spreadRadius: 4.0,
+                      offset: Offset(
+                        2.0,
+                        2.0,
+                      ),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    HorizontalListView(widget.project.members, 5, 32, true),
+                  ],
                 ),
               )
             ],
