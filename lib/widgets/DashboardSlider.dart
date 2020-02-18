@@ -1,17 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:scrum_it/models/Organization.dart';
-
-import '../Utlis.dart';
 import 'package:scrum_it/widgets/SliderItems/OrganizationItem.dart';
 
+import '../Utlis.dart';
 import 'SliderItems/ProjectItem.dart';
 
 class DashboardSlider extends StatefulWidget {
-
   double height;
   List dataList;
-  String item ;
+  String item;
   double aspectRatio;
   double viewPort;
 
@@ -25,27 +22,25 @@ class DashboardSlider extends StatefulWidget {
 }
 
 class _DashboardSliderState extends State<DashboardSlider> {
-
   int _organization = 0;
   int _project = 0;
 
   @override
   Widget build(BuildContext context) {
-
     List child = Utils.map<Widget>(
       //Organization.getOrganizationData(),
       widget.dataList,
-          (index, i) {
-            switch (widget.item) {
-              case 'OrganizationItem':
-                return OrganizationItem(i);
-                break;
-              case 'ProjectItem':
-                return ProjectItem(i);
-                break;
-              default:
-                return OrganizationItem(i);
-            }
+      (index, i) {
+        switch (widget.item) {
+          case 'OrganizationItem':
+            return OrganizationItem(i);
+            break;
+          case 'ProjectItem':
+            return ProjectItem(i);
+            break;
+          default:
+            return OrganizationItem(i);
+        }
       },
     ).toList();
 
@@ -62,7 +57,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
             scrollPhysics: BouncingScrollPhysics(),
             enableInfiniteScroll: child.length > 2 ? true : false,
             autoPlay: child.length > 2 ? true : false,
-            pauseAutoPlayOnTouch: Duration(seconds: 30),
+            pauseAutoPlayOnTouch: Duration(seconds: 3),
             enlargeCenterPage: true,
             //aspectRatio: 1.7,
             aspectRatio: widget.aspectRatio,
@@ -78,7 +73,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
                   });
                   break;
                 case 'ProjectItem':
-                  return  setState(() {
+                  return setState(() {
                     _project = index;
                   });
                   break;
@@ -96,22 +91,32 @@ class _DashboardSliderState extends State<DashboardSlider> {
                   height: 8.0,
                   margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                   decoration: BoxDecoration(
-                      shape: _organization == index ? BoxShape.rectangle : BoxShape.circle,
-                      borderRadius: _organization == index ? BorderRadius.all(Radius.circular(28)) : null,
-                      color: _organization == index ? Color(0xffB99EAA) : Color(0x33B99EAA)
-                  ),
+                      shape: _organization == index
+                          ? BoxShape.rectangle
+                          : BoxShape.circle,
+                      borderRadius: _organization == index
+                          ? BorderRadius.all(Radius.circular(28))
+                          : null,
+                      color: _organization == index
+                          ? Color(0xffB99EAA)
+                          : Color(0x33B99EAA)),
                 );
                 break;
               case 'ProjectItem':
                 return Container(
-                  width: _project  == index ? 28 : 8.0,
+                  width: _project == index ? 28 : 8.0,
                   height: 8.0,
                   margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                   decoration: BoxDecoration(
-                      shape: _project == index ? BoxShape.rectangle : BoxShape.circle,
-                      borderRadius: _project == index ? BorderRadius.all(Radius.circular(28)) : null,
-                      color: _project == index ? Color(0xffB99EAA) : Color(0x33B99EAA)
-                  ),
+                      shape: _project == index
+                          ? BoxShape.rectangle
+                          : BoxShape.circle,
+                      borderRadius: _project == index
+                          ? BorderRadius.all(Radius.circular(28))
+                          : null,
+                      color: _project == index
+                          ? Color(0xffB99EAA)
+                          : Color(0x33B99EAA)),
                 );
                 break;
 
