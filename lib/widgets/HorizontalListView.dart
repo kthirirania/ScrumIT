@@ -63,7 +63,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
               ),
               child: Center(
                 child: Text(
-                  '+' + (widget.list.length - 3).toString(),
+                  '+' + (widget.list.length - widget.maxNumber).toString(),
                   style: TextStyle(color: Colors.white),
                 ),
               ),

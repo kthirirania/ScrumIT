@@ -11,6 +11,7 @@ class DashboardSlider extends StatefulWidget {
   String item;
   double aspectRatio;
   double viewPort;
+  bool autoP = true;
 
   final void Function(dynamic index) updateSelection;
 
@@ -24,6 +25,12 @@ class DashboardSlider extends StatefulWidget {
 class _DashboardSliderState extends State<DashboardSlider> {
   int _organization = 0;
   int _project = 0;
+
+  setAutoPlayToFalse() {
+    setState(() {
+      widget.autoP = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +63,7 @@ class _DashboardSliderState extends State<DashboardSlider> {
             initialPage: child.length > 2 ? 1 : 0,
             scrollPhysics: BouncingScrollPhysics(),
             enableInfiniteScroll: child.length > 2 ? true : false,
-            autoPlay: child.length > 2 ? true : false,
+            autoPlay: child.length > 2 ? widget.autoP : false,
             pauseAutoPlayOnTouch: Duration(seconds: 3),
             enlargeCenterPage: true,
             //aspectRatio: 1.7,

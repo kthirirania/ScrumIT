@@ -49,6 +49,22 @@ class Member {
         new Member(
             "https://drive.google.com/uc?export=view&id=1fW8Vwvwlts_9yXuIxkprzH_qg9IECZdA",
             "",
+            ""),
+        new Member(
+            "https://drive.google.com/uc?export=view&id=1-cEfiVtfrcNMNxDFIvZM3vG2lSYtmsvk",
+            "",
+            ""),
+        new Member(
+            "https://drive.google.com/uc?export=view&id=1_Gw8zH53C_ytYko6Mc463UvWDQi3uaOS",
+            "",
+            ""),
+        new Member(
+            "https://drive.google.com/uc?export=view&id=1hwWbkT5OhQuPdOLs-AX2dKkfUfxX5vtS",
+            "",
+            ""),
+        new Member(
+            "https://drive.google.com/uc?export=view&id=1fW8Vwvwlts_9yXuIxkprzH_qg9IECZdA",
+            "",
             "")
       ];
 }
